@@ -30,11 +30,9 @@ CREATE TABLE users (
   name VARCHAR(100),
   email VARCHAR(100)
 );
-Step 3: Create Database Connector in PHP
+### Step 3: Create Database Connector in PHP
 Create a project folder in WAMP:
 
-makefile
-Copy code
 C:\wamp64\www\student_crud
 Inside this folder, create a file named connect.php.
 
@@ -44,32 +42,36 @@ Example code can be found in the project files.
 
 
 
-Step 4: Insert Data from PHP
+### Step 4: Insert Data from PHP
 Create a file named insert.php in the same folder as connect.php.
 
 This file will handle inserting data into the database.
 
 Refer to your project files for example code.
 
-Step 5: Run the Application
+##Step 5: Run the Application
 Ensure all files are saved under:
 
-makefile
-Copy code
 C:\wamp64\www\student_crud\
 Start WAMP (make sure Apache and MySQL services are green).
 
 Visit the app in your browser:
+<img width="637" height="289" alt="image" src="https://github.com/user-attachments/assets/63a8bced-0631-4e03-a9be-21dc58cc5845" />
 
 arduino
 Copy code
 http://localhost/student_crud/
 ✅ You can now:
 
-Add new students
+-Add new students
 
-View all records
+-View all records
 
-Edit a record
+-Edit a record
 
-Delete a record
+-Delete a record
+
+# NOTE make sure the wamp is color green to run smoothly
+
+<img width="255" height="149" alt="image" src="https://github.com/user-attachments/assets/7233d2b1-c6f7-4294-b391-d187a12e49c6" />
+
