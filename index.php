@@ -1,10 +1,14 @@
-<?php include 'connect.php'; ?>
+<?php 
+// Include database connection
+include 'connect.php'; 
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
   <title>Student CRUD</title>
   <style>
+    /* Basic page styling */
     body { font-family: Arial; margin: 40px; }
     form { margin-bottom: 20px; }
     input, select { padding: 6px; margin-right: 8px; }
@@ -19,6 +23,7 @@
 
   <!-- Add Student Form -->
   <form method="POST" action="">
+    <!-- Input fields for student name, date, and status -->
     <input type="text" name="name" placeholder="Student Name" required>
     <input type="date" name="date" required>
     <select name="status" required>
@@ -30,38 +35,44 @@
   </form>
 
   <?php
-  // CREATE
+  // CREATE: Insert new student when 'Add' button is clicked
   if (isset($_POST['add'])) {
-    $name = $_POST['name'];
-    $date = $_POST['date'];
-    $status = $_POST['status'];
+    $name = $_POST['name'];      // Get student name from form
+    $date = $_POST['date'];      // Get date from form
+    $status = $_POST['status'];  // Get status from form
 
+    // Insert data into 'students' table
     $sql = "INSERT INTO students (name, date, status) VALUES ('$name', '$date', '$status')";
     $conn->query($sql);
-    header("Location: index.php"); // refresh page
+
+    // Refresh page to show updated data
+    header("Location: index.php"); 
   }
 
-  // DELETE
+  // DELETE: Remove a student when 'Delete' link is clicked
   if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    $conn->query("DELETE FROM students WHERE id=$id");
-    header("Location: index.php");
+    $id = $_GET['delete']; // Get student ID from URL
+    $conn->query("DELETE FROM students WHERE id=$id"); // Delete record
+    header("Location: index.php"); // Refresh page
   }
 
-  // UPDATE
+  // UPDATE: Update student data when 'Update' button is clicked
   if (isset($_POST['update'])) {
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $date = $_POST['date'];
-    $status = $_POST['status'];
+    $id = $_POST['id'];       // Get student ID
+    $name = $_POST['name'];   // Get updated name
+    $date = $_POST['date'];   // Get updated date
+    $status = $_POST['status']; // Get updated status
+
+    // Update record in database
     $conn->query("UPDATE students SET name='$name', date='$date', status='$status' WHERE id=$id");
-    header("Location: index.php");
+    header("Location: index.php"); // Refresh page
   }
 
-  // READ
+  // READ: Fetch all students from database
   $result = $conn->query("SELECT * FROM students ORDER BY id DESC");
   ?>
 
+  <!-- Display student data in a table -->
   <table>
     <tr>
       <th>ID</th>
@@ -78,6 +89,7 @@
         <td><?= $row['date'] ?></td>
         <td><?= $row['status'] ?></td>
         <td>
+          <!-- Edit and Delete links -->
           <a href="?edit=<?= $row['id'] ?>">Edit</a> |
           <a href="?delete=<?= $row['id'] ?>" onclick="return confirm('Delete this record?')">Delete</a>
         </td>
@@ -86,15 +98,17 @@
   </table>
 
   <?php
-  // EDIT FORM
+  // EDIT FORM: Show edit form if 'Edit' link is clicked
   if (isset($_GET['edit'])):
-    $id = $_GET['edit'];
-    $editResult = $conn->query("SELECT * FROM students WHERE id=$id");
-    $editRow = $editResult->fetch_assoc();
+    $id = $_GET['edit']; // Get student ID from URL
+    $editResult = $conn->query("SELECT * FROM students WHERE id=$id"); // Fetch student data
+    $editRow = $editResult->fetch_assoc(); // Store data in variable
   ?>
   <h3>Edit Student</h3>
   <form method="POST" action="">
+    <!-- Hidden field to store student ID -->
     <input type="hidden" name="id" value="<?= $editRow['id'] ?>">
+    <!-- Input fields pre-filled with existing data -->
     <input type="text" name="name" value="<?= $editRow['name'] ?>" required>
     <input type="date" name="date" value="<?= $editRow['date'] ?>" required>
     <select name="status" required>
