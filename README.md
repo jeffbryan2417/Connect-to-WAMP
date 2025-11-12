@@ -92,6 +92,30 @@ C:\wamp64\www\student_crud\
 ```
 http://localhost/student_crud/
 ```
+## Step 6: Verify Inserted Data
+
+After inserting the data and if the input was successfully accepted:
+
+1. Check in WAMP MySQL to see if the data is reflected.
+
+![Check in WAMP MySQL](https://github.com/user-attachments/assets/c60dcaf3-f640-429e-882d-6aa6c84ac90b)
+
+2. Alternatively, you can run a SQL query:
+   - Click your database in phpMyAdmin.
+   - Go to the **SQL** tab.
+   - Run the query:
+
+```sql
+SELECT * FROM `students`;
+```
+
+> Replace `students` with the actual name of your table if different.
+
+![Run SQL query](https://github.com/user-attachments/assets/5a284b01-fec8-4cd5-b4b4-4fffed185407)
+![Query result](https://github.com/user-attachments/assets/44c4b152-b53e-4a53-b770-786c95a4ac15)
+
+
+
 
 ✅ You can now:
 
