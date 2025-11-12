@@ -69,31 +69,12 @@ if ($conn->connect_error) {
 
 ---
 
-## Step 4: Insert Data from PHP
+## Step 4: Create index.php (Frontend + CRUD Logic)
 
-1. Create a file named `insert.php` in the same folder as `connect.php`.
-2. This file will handle inserting data into the database. Example code:
+1. Create a file named `index.php` in the same folder as `connect.php`.
+2. This file will handle inserting data and front end into the database. Example code:
 
-```php
-<?php
-include 'connect.php';
-
-$name = $_POST['name'];
-$email = $_POST['email'];
-
-$sql = "INSERT INTO users (name, email) VALUES ('$name', '$email')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
-?>
-```
-
-> You can expand this file to include Edit, Update, Delete, and View operations for a full CRUD.
+# REFER ON THE FILE NAME index.php
 
 ---
 
