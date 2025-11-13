@@ -28,10 +28,11 @@
 3. Create a table named `users` with the following SQL:
 
 ```sql
-CREATE TABLE users (
+CREATE TABLE students (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),
-  email VARCHAR(100)
+  date DATE,
+  status VARCHAR(50)
 );
 ```
 
