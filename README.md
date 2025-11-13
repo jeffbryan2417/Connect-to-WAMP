@@ -25,7 +25,7 @@
 
 1. Once logged in, click **New** to create a new database.
 2. Name the database `student_db`.
-3. Create a table named `users` with the following SQL:
+3. Create a table named `students` with the following SQL:
 
 ```sql
 CREATE TABLE students (
